@@ -1,0 +1,6 @@
+[database]
+host     = "sdsv4.its.virginia.edu"
+username = "jubayr_user"
+password = "jubilation"
+name     = "jubayr_production"
+prefix   = "omeka_"

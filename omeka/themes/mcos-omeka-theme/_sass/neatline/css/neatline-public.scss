@@ -1,0 +1,25 @@
+#neatline {
+  height: 900px;
+  position:relative;
+  border: 10px solid rgba(0,0,0,0.1);
+  border-width: 10px 0;
+
+  .item-relations-display-item-relations {
+    li {
+      overflow:hidden;
+      *zoom:1;
+      padding: 4px 0;
+      .related-item-thumbnail {
+        display:block;
+        float:right;
+        margin-left: 10px;
+        width: 70px;
+      }
+
+      & + li {
+        border-top: 1px dotted #ddd;
+      }
+    }
+  }
+
+}

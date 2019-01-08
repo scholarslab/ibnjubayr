@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Omeka" basedir=".">
+    <property name="lang.dir" location="application/languages" />
+
+    <target name="test" description="Run automated tests.">
+        <exec executable="phpunit" dir="application/tests" failonerror="true"/>
+    </target>
+
+    <target name="test-plugins" description="Run automated tests for plugins.">
+        <apply executable="phpunit" failonerror="true">
+            <arg value="-c" />
+            <fileset dir="plugins" includes="*/tests/phpunit.xml" />
+        </apply>
+    </target>
+
+    <target name="test-all" depends="test,test-plugins" description="Run all automated tests." />
+
+    <target name="update-pot" description="Update the translation template.">
+        <property name="pot.file" location="${lang.dir}/Omeka.pot"/>
+        <property name="pot.base" location="${lang.dir}/Omeka.base.pot"/>
+        <tempfile property="pot.temp" suffix=".pot"/>
+        <apply executable="xgettext" relative="true" parallel="true" verbose="true">
+            <arg value="-L"/>
+            <arg value="php"/>
+            <arg value="--from-code=utf-8"/>
+            <arg value="-k__"/>
+            <arg value="--flag=__:1:pass-php-format"/>
+            <arg value="--omit-header"/>
+            <arg value="-F"/>
+            <arg value="-o"/>
+            <arg file="${pot.temp}"/>
+            <fileset dir="." includes="**/*.php **/*.phtml" excludes="themes/ plugins/"/>
+        </apply>
+        <exec executable="msgcat">
+            <arg value="-o"/>
+            <arg file="${pot.file}"/>
+            <arg file="${pot.base}"/>
+            <arg file="${pot.temp}"/>
+        </exec>
+        <delete file="${pot.temp}" quiet="true"/>
+    </target>
+
+    <target name="build-mo" description="Build the MO translation files.">
+        <apply executable="msgfmt" dest="${lang.dir}" verbose="true">
+            <arg value="-o"/>
+            <targetfile />
+            <srcfile />
+            <fileset dir="${lang.dir}" includes="*.po"/>
+            <mapper type="glob" from="*.po" to="*.mo"/>
+        </apply>
+    </target>
+</project>

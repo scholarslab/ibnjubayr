@@ -1,0 +1,182 @@
+
+$fg1: #000;
+$bg1: #EAE9DB;
+
+$fg2: #FAFAFA;
+$bg2: #382E22;
+
+$fghigh1: #000;
+$bghigh1: #EAE9DB;
+
+$fghigh2: #DDD;
+$bghigh2: #2E261C;
+
+$border1: silver;
+$border2: #FFF;
+
+@mixin tab-colors($color, $bgcolor) {
+    background-color: $bgcolor;
+    border-bottom-color: $bgcolor;
+    color: $color;
+}
+
+@mixin clearfix {
+    &:after {
+        content: ".";
+        display: block;
+        clear: both;
+        visibility: hidden;
+        line-height: 0;
+        height: 0;
+    }
+}
+
+.nlfeatures {
+    .nlfeatures-edit {
+        color: $fg2;
+        background-color: $bg2;
+    }
+    .nlfeatures-edit-nav-menu {
+        background: transparent;
+        border-left: 1px solid $border2;
+        ul {
+            margin-bottom: 0px;
+            border-left: 1px solid $border2;
+            background: transparent;
+            float: left;
+            margin-left: 1em;
+            li {
+                @include tab-colors($fghigh2, $bghigh2);
+
+                list-style-type: none;
+                display: block;
+                float: left;
+
+                width: 75px;
+                padding: 1em;
+                margin: 0px;
+                border-top: 1px solid $border2;
+                border-right: 1px solid $border2;
+                a {
+                    color: $fghigh2;
+                    text-decoration: none;
+                    font-size: 0.9em;
+                }
+            }
+            li:hover {
+                background-color: $bg2;
+                cursor: pointer;
+            }
+            li.selected {
+                @include tab-colors($fghigh1, $bghigh1);
+                a {
+                    color: $fghigh1;
+                }
+            }
+        }
+    }
+    .nlfeatures-edit-nav-tools {
+        float: right;
+        li {
+            width: 20px;
+        }
+    }
+    .nlfeatures-edit-body {
+        clear: both;
+        color: $fg1;
+        background-color: $bg1;
+        padding: 1.5em;
+    }
+    .nlfeatures-map-tools {
+        width: 100%;
+        height: 45px;
+        padding-top: 7px;
+    }
+    .text-container {
+        @include clearfix;
+    }
+    .map-container {
+        margin-top: 10px;
+    }
+    .nlfeatures-edit-raw,
+    .nlfeatures-edit-map {
+        background: transparent;
+    }
+    .olMap {
+        border: 1px solid $border2;
+        width: 100%;
+        height: 360px;
+        svg {
+            display: block;
+        }
+    }
+    .primary {
+        background-color: #0064cd;
+        background-repeat: repeat-x;
+        background-image: -khtml-gradient(linear, left top, left bottom, from(#049cdb), to(#0064cd));
+        background-image: -moz-linear-gradient(top, #049cdb, #0064cd);
+        background-image: -ms-linear-gradient(top, #049cdb, #0064cd);
+        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #049cdb), color-stop(100%, #0064cd));
+        background-image: -webkit-linear-gradient(top, #049cdb, #0064cd);
+        background-image: -o-linear-gradient(top, #049cdb, #0064cd);
+        background-image: linear-gradient(top, #049cdb, #0064cd);
+        color: #fff;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+        border: 1px solid #004b9a;
+        border-bottom-color: #003f81;
+    }
+    .primary:hover {
+        color: #fff;
+    }
+    .disabled {
+        background-color: #cccccc;
+        background-repeat: repeat-x;
+        background-image: -khtml-gradient(linear, left top, left bottom, from(#737373), to(#cccccc));
+        background-image: -moz-linear-gradient(top, #737373, #cccccc);
+        background-image: -ms-linear-gradient(top, #737373, #cccccc);
+        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #737373), color-stop(100%, #cccccc));
+        background-image: -webkit-linear-gradient(top, #737373, #cccccc);
+        background-image: -o-linear-gradient(top, #737373, #cccccc);
+        background-image: linear-gradient(top, #737373, #cccccc);
+        color: #fff;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+        border: 1px solid #004b9a;
+        border-bottom-color: #003f81;
+    }
+    label.use-mapon {
+        position: relative;
+        float: left;
+        padding-left: 16px;
+        width: 8em;
+        text-align: left;
+        font-size: 1.1em;
+        margin: 0;
+
+        input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 0;
+            float: none;
+            padding: 0;
+        }
+    }
+    .nlflash {
+        display: none;
+        -moz-border-radius: 5px;
+        -o-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -khtml-border-radius: 5px;
+        border-radius: 5px;
+        border: 1px solid #333;
+        background: #eae9db;
+        color: #333;
+        padding: 2px 4px;
+        width: 25%;
+        opacity: 0.8;
+    }
+    label.olButton {
+        color: #ddd;
+    }
+}
+

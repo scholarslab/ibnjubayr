@@ -1,0 +1,28 @@
+@import "../base";
+
+// screen --------------------------------------------------------------------
+@media only screen {
+  @import "media/screen";
+
+  @media (min-width: 480px) {
+    @import "media/screen_480";
+  }
+
+  @media (min-width: 768px) {
+    @import "media/screen_768";
+  }
+
+  @media (min-width: 992px) {
+    @import "media/screen_992";
+  }
+
+  @media (min-width: 1382px) {
+    @import "media/screen_1382";
+  }
+
+}
+
+// print ---------------------------------------------------------------------
+@media print {
+  @import "media/print";
+}

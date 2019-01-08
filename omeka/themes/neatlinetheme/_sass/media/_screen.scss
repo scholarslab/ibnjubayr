@@ -1,0 +1,289 @@
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+@include establish-baseline;
+
+html {
+  background: #f9f9f9 url(images/bg_wrapper.jpg);
+  border-top: rhythm(0.25) solid $highlight-color;
+}
+
+body {
+  @include background-image(
+    linear-gradient(rgba(0,0,0,0.15) 0, rgba(0,0,0,0) 10%)
+  );
+  background-repeat: no-repeat;
+  border-top:2px solid rgba(255,255,255,0.75);
+  color: $default-color;
+  @include serif;
+  
+}
+
+fieldset {
+  margin:0;
+  padding:0;
+  border:none;
+}
+
+input {
+  &[type="text"] {
+      border: 0;
+      background-color: #fff;
+      border: 1px solid rgba(0,0,0,0.1);
+      color: #555;
+      padding: 5px;
+  }
+}
+
+nav,
+.navigation{
+  ul,
+  ol {
+    list-style:none;
+    margin-left:0;
+    padding-left:0;
+  }
+}
+
+h1 {
+  @include adjust-font-size-to(30px);
+  @include adjust-leading-to(0.75);
+  text-shadow: rgba(255,255,255,0.5) -1px 0;
+}
+
+h2 {
+  color: $default-color-light;
+}
+
+/* Links */
+a {
+  &:link {
+    color: $link-color;
+  }
+
+  &:visited {
+    color: $link-color-light;
+  }
+
+  &:hover,
+  &:active {
+    color:$link-color-alternate;
+  }
+
+  &.button {
+    padding: 0.25em 0.5em;
+
+    &:link,
+    &:visited {
+      color:#fff;
+      background-color: $link-color; 
+    }
+
+    &:hover,
+    &:active {
+      color:#fff;
+      background-color: darken($link-color, 10%);
+    }
+  }
+}
+
+#{headings(1,6)} {
+
+  a {
+    text-decoration:none;
+  }
+}
+
+#{headings(2,6)} {
+  @include leader(1);
+}
+
+figure {
+  @include trailer(1);
+}
+
+figcaption {
+  font-style:italic;
+  @include adjust-font-size-to(12px);
+  color: $light-grey;
+}
+
+img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+
+  .olMap & {
+    max-width: inherit;
+  }
+}
+
+/* Buttons */
+
+input {
+  &[type=button] {
+    @include button;
+  }
+}
+
+button,
+.button {
+  @include button;
+}
+
+.kicker {
+  @include kicker;
+}
+
+/* Utility Classes */
+.container {
+  @include clearfix;
+}
+
+.pagination {
+  @include pagination;
+}
+
+#wrap {
+  @include container;
+}
+
+/**
+ * Banner Header
+ */
+header[role=banner] {
+  @include clearfix;
+  text-align:center;
+  @include leader(1);
+}
+
+#site-title {
+  @include adjust-font-size-to(24px);
+}
+
+#search-container {
+  @include adjust-font-size-to(12px);
+  @include trailer(1);
+
+  a.advanced-search {
+    text-decoration:none;
+  }
+
+}
+
+#simple-search {
+  position: relative;
+  
+  input {
+    
+    &[type=text] {
+      width: 100%;
+      padding: 10px 35px 10px 10px;
+      text-align:left;
+    }
+
+    &[type=submit] {
+      width: 35px;
+      height: 16px;
+      background:url('../images/search-icon.png')  50% 0 no-repeat;
+      border: 0;
+      cursor: pointer;
+      position: absolute;
+      right:0;
+      top: 50%;
+      margin-top: -8px;
+      text-indent: -999px;
+      border:none;
+      opacity: 0.5;
+      border-left: 1px dotted rgba(0,0,0,0.25);
+      padding-left: 10px;
+      &:hover,
+      &:active {
+        opacity:1;
+      }
+    }
+
+  }
+}
+
+#sitenav {
+  clear:both;
+  margin:0;
+  text-align:center;
+  text-transform:uppercase;
+  letter-spacing: 1px;
+  @include adjust-font-size-to(12px);
+  @include adjust-leading-to(2);
+  @include beveled-line;
+  @include beveled-line('after');  
+  @include horizontal-nav;
+}
+
+/**
+ * Main Content
+ */
+div[role=main] {
+  clear:both;
+}
+
+.items-nav {
+  display:none;
+}
+
+/**
+ * Main Content
+ */
+.neatline {
+
+  #items {
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 0.8em 0 0;
+    }
+
+    div.element {
+      margin-bottom: 0.5em;
+    }
+
+    a.item-dc-link {
+      display: none;
+    }
+
+    div.element-set h2:first-child {
+      display: none;
+    }
+
+  }
+
+}
+
+
+/* Footer
+----------------------------------------------------------------------------*/
+footer[role="contentinfo"] {
+  clear:both;
+  @include clearfix;
+  @include sans-serif;
+  @include beveled-line;
+  @include trailer(1);
+  
+  #footer-text {
+    @include adjust-font-size-to(12px);
+    @include adjust-leading-to(1);
+    color: $default-color-light;
+  }
+
+  nav {  
+    @include horizontal-nav;
+    @include adjust-font-size-to(12px);
+    @include adjust-leading-to(1);
+
+    ul {
+      @include leader(0.5);
+    }
+  }
+}
+

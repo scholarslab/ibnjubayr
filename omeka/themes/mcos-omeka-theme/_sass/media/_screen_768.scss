@@ -1,0 +1,102 @@
+body {
+}
+
+header[role="banner"] {
+  text-align:left;
+  @include clearfix;
+
+  * {
+    margin:0;
+  }
+  padding-top: rhythm(0.5);
+  padding-bottom: rhythm(0.5);
+
+  h1 {
+    @include span-columns(6, 12);
+    @include adjust-font-size-to(16px);
+    font-weight: normal;
+  }
+
+  #primary-nav {
+    text-align:right;
+    @include span-columns(6 omega, 12);
+
+    nav {
+      float:right;
+      margin-right: 1em;
+    }
+  }
+
+  #search {
+    margin:0;
+    float:right;
+  }
+}
+
+div[role="main"] {
+
+  @include clearfix;
+
+  #home & {
+    #hajj {
+      @include span-columns(4 omega, 8);
+      @include push(1);
+    }
+
+  }
+  .browse & {
+    .dublin-core-coverage {
+      width: 50%;
+      float:right;
+    }
+
+    .item-metadata {
+      margin-left: rhythm(1);
+    }
+
+    .item {
+      padding-bottom: rhythm(1);
+      border-bottom: 1px dotted $default-color-lightest;
+
+      @include clearfix;
+    }
+  }
+}
+
+#secondary{
+  @include span-columns(5 omega, 10);
+
+  #dublin-core-coverage {
+    height: 100%;
+    max-height: 100%;
+  }
+}
+
+#neatline-header {
+  @include clearfix;
+  margin-bottom: rhythm(1);
+
+  h1, a {
+    display:inline;
+  }
+  
+  .exhibit-fullscreen {
+    display:none;
+  }
+}
+
+footer[role="contentinfo"] {
+  clear:both;
+  text-align:left;
+
+  nav {
+    @include span-columns(6, 12);
+  }
+
+  .credits {
+    margin:0;
+    @include span-columns(6 omega, 12);
+  }
+
+}
+

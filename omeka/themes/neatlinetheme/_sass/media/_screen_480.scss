@@ -1,0 +1,36 @@
+header[role="banner"] {
+  @include clearfix;
+  text-align:left;
+}
+
+#site-title {
+  @include span-columns(4);
+  margin:0;
+}
+
+#search-container {
+  text-align:right;
+  margin:0;
+  @include span-columns(4 omega);
+
+  input[type=text] {
+    max-width: 200px;
+  }
+}
+
+#sitenav {
+  clear:both;
+  @include padding-leader(1);
+}
+
+footer[role=contentinfo] {
+  padding:0;
+
+  nav {
+    @include span-columns(4, 8);
+  }
+
+  #footer-text {
+    @include span-columns(4 omega, 8);
+  }
+}

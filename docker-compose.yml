@@ -1,0 +1,31 @@
+version: '2'
+
+services:
+  jubayr_db:
+    image: mysql:5.7
+    container_name: jubayr_db
+    volumes:
+      - ./db_data:/var/lib/mysql
+
+      # This line is only used for the initial start up (the very first time
+      # docker-compose is run or if there is no data in the 'db_data' folder
+      - ./initial_sql/jubayr_production.sql:/docker-entrypoint-initdb.d/jubayr_production.sql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: GoodStrongRootPass
+      MYSQL_DATABASE: omeka
+      MYSQL_USER: omekaUser
+      MYSQL_PASSWORD: GoodStrongOmekaUserPass
+
+  jubayr_omeka:
+    build:
+      context: .
+    depends_on:
+      - jubayr_db
+    image: jubayr:0.4
+    container_name: jubayr_omeka
+    volumes:
+      - ./omeka:/var/www/html/
+    restart: always
+    ports:
+      - "80:80"

@@ -1,0 +1,170 @@
+.neatline-edition-container {
+  position: relative;
+  border: 10px solid rgba(0,0,0,0.1);
+  border-width: 10px 0;
+  height: 740px;
+  width: 100%;
+
+  .neatline-text-container {
+    padding-top: 1em;
+    white-space: pre;
+    font-size: 17px;
+    line-height: 38px;
+    width: 37%;
+    height: 100%;
+    float: left;
+    overflow-y: scroll;
+
+    .line-number {
+      font-family: Palatino;
+    }
+
+    .neatline-span {
+      cursor: pointer;
+      padding: 3px;
+      border-radius: 3px;
+
+      &.selected {
+        color: whiteSmoke;
+      }
+
+      &.blue {
+        background: #d4dfff;
+
+        &.highlighted {
+          background: #c3d2ff;
+        }
+
+        &.selected {
+          background: #4173ff;
+        }
+
+      }
+
+      &.red {
+        background: #FFD2D2;
+
+        &.highlighted {
+          background: #FFB2B2;
+        }
+
+        &.selected {
+          background: #EC3F3F;
+        }
+
+      }
+
+      &.purple {
+        background: #ECD8FF;
+
+        &.highlighted {
+          background: #E1C2FF;
+        }
+
+        &.selected {
+          background: #861CE9;
+        }
+
+      }
+
+      &.gold {
+        background: #FFEEAB;
+
+        &.highlighted {
+          background: #FDE275;
+        }
+
+        &.selected {
+          background: #FFD322;
+          color: black;
+        }
+
+      }
+
+      &.green {
+        background: #C6EEC1;
+
+        &.highlighted {
+          background: #92DA88;
+        }
+
+        &.selected {
+          background: #3C9C2F;
+        }
+
+      }
+
+      &.pink {
+        background: #FFCFE4;
+
+        &.highlighted {
+          background: #FFBAD8;
+        }
+
+        &.selected {
+          background: #F54F9A;
+        }
+
+      }
+
+      &.turquoise {
+        background: #B8EFF7;
+
+        &.highlighted {
+          background: #9BE8F3;
+        }
+
+        &.selected {
+          background: #00C7E4;
+          color: black;
+        }
+
+      }
+
+      &.orange {
+        background: #FDD0AC;
+
+        &.highlighted {
+          background: #F3AC73;
+        }
+
+        &.selected {
+          background: #E47823;
+        }
+
+      }
+
+    }
+
+  }
+
+  #neatline {
+    margin: 0 !important;
+    position: relative;
+    float: right;
+    height: 100% !important;
+    width: 63%;
+
+    .bubble-container {
+      overflow: hidden;
+      z-index: 999;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+      background: #fcfcfc;
+      padding: 10px;
+      color: #2b2b2b !important;
+      opacity: 0.95;
+
+      &.frozen {
+        opacity: 1;
+      }
+
+      a {
+        color: #2b2b2b !important;
+      }
+
+    }
+
+  }
+
+}
