@@ -16,6 +16,8 @@ services:
       MYSQL_DATABASE: omeka
       MYSQL_USER: omekaUser
       MYSQL_PASSWORD: GoodStrongOmekaUserPass
+    labels:
+      - "traefik.enable=false"
 
   jubayr_omeka:
     build:
@@ -27,5 +29,19 @@ services:
     volumes:
       - ./omeka:/var/www/html/
     restart: always
-    ports:
-      - "80:80"
+    environment:
+      OMEKA_DB_HOST: ${OMEKA_DB_HOST}
+      OMEKA_DB_USER: ${MYSQL_USER}
+      OMEKA_DB_PASSWORD: ${MYSQL_PASSWORD}
+      OMEKA_TABLE_PREFIX: ${OMEKA_TABLE_PREFIX}
+    labels:
+      - "traefik.docker.network=thenetwork"
+      - "traefik.enable=true"
+      - "traefik.port=80"
+      - "traefik.backend=jubayr_omeka"
+      - "traefik.frontend.rule=Host:ibnjubayr.lib.virginia.edu"
+
+networks:
+  default:
+    external:
+      name: thenetwork
